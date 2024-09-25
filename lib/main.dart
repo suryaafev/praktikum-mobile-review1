@@ -12,11 +12,12 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        colorScheme: ColorScheme.fromSeed(
+            seedColor: const Color.fromARGB(255, 226, 36, 213)),
         useMaterial3: true,
       ),
       debugShowCheckedModeBanner: false,
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const MyHomePage(title: ' Transportations  '),
     );
   }
 }
@@ -31,70 +32,141 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  final titles = ['Bike', 'Boat', 'Bus', 'Car'];
   @override
   Widget build(BuildContext context) {
+    // final icons = [
+    //   Icons.directions_bike,
+    //   Icons.directions_boat,
+    //   Icons.directions_bus,
+    //   Icons.directions_car
+    // ];
+
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text(widget.title),
-      ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment
-            .center, // Mengatur elemen agar berada di tengah vertikal
-        children: [
-          // Row di atas
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Container(
-                width: 50,
-                height: 50,
-                margin: const EdgeInsets.all(10),
-                color: Colors.orange,
+        appBar: AppBar(
+          backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+          title: Text(widget.title),
+        ),
+        body: ListView.builder(
+          itemCount: titles.length,
+          itemBuilder: (context, nomor) {
+            return Card(
+                child: ListTile(
+              leading: CircleAvatar(
+                backgroundImage:
+                    NetworkImage("https://picsum.photos/200/300?images=$nomor"),
               ),
-              Container(
-                width: 50,
-                height: 50,
-                margin: const EdgeInsets.all(10),
-                color: Colors.red,
-              ),
-              Container(
-                width: 50,
-                height: 50,
-                margin: const EdgeInsets.all(10),
-                color: Colors.blue,
-              ),
-            ],
-          ),
+              title: Text(titles[nomor]),
+              trailing: Icon(Icons.keyboard_arrow_right),
+              onTap: () {
+                setState(() {
+                  titles.removeAt(nomor);
+                });
+              },
+            ));
+          },
+        )
 
-          const SizedBox(height: 20), // Spasi antara Row atas dan bawah
+        // ListView(
+        //   children: const [
+        //     ListTile(
+        //         leading: CircleAvatar(
+        //           backgroundImage: AssetImage("sun.jpg"),
+        //         ),
+        //         title: Text("Sun"),
+        //         trailing: Icon(Icons.keyboard_arrow_right)),
+        //     ListTile(
+        //         leading: Icon(Icons.brightness_3),
+        //         title: Text("Bulan"),
+        //         trailing: Icon(Icons.keyboard_arrow_right)),
+        //     ListTile(
+        //         leading: Icon(Icons.star),
+        //         title: Text("Bintang"),
+        //         trailing: Icon(Icons.keyboard_arrow_right)),
+        //   ],
+        // )
 
-          // Row di bawah
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Container(
-                width: 50,
-                height: 50,
-                margin: const EdgeInsets.all(10),
-                color: Colors.purple,
-              ),
-              Container(
-                width: 50,
-                height: 50,
-                margin: const EdgeInsets.all(10),
-                color: Colors.green,
-              ),
-              Container(
-                width: 50,
-                height: 50,
-                margin: const EdgeInsets.all(10),
-                color: Colors.yellow,
-              ),
-            ],
-          ),
-        ],
-      ),
-    );
+        // GridView(
+        //   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+        //     crossAxisCount: 3,
+        //   ),
+        //   padding: const EdgeInsets.all(10),
+        //   children: [
+        //     Container(
+        //         width: double.infinity,
+        //         height: 250,
+        //         margin: const EdgeInsets.only(bottom: 10),
+        //         decoration: BoxDecoration(
+        //             color: Colors.red,
+        //             image: DecorationImage(image: AssetImage("gambar.jpg")))),
+        //     Container(
+        //       width: double.infinity,
+        //       height: 250,
+        //       margin: const EdgeInsets.only(bottom: 10),
+        //       color: Colors.blue,
+        //       child: const Image(image: AssetImage("th.jpg")),
+        //     ),
+        //     Container(
+        //         width: double.infinity,
+        //         height: 250,
+        //         margin: const EdgeInsets.only(bottom: 10),
+        //         color: Colors.green,
+        //         child: Image.network("https://picsum.photos/200")),
+        //   ],
+        // ),
+
+        // body: Column(
+        //   mainAxisAlignment: MainAxisAlignment.center,
+        //   children: [
+        //     Row(
+        //       mainAxisAlignment: MainAxisAlignment.center,
+        //       children: [
+        //         Container(
+        //           width: 50,
+        //           height: 50,
+        //           margin: const EdgeInsets.all(10),
+        //           color: Colors.orange,
+        //         ),
+        //         Container(
+        //           width: 50,
+        //           height: 50,
+        //           margin: const EdgeInsets.all(10),
+        //           color: Colors.red,
+        //         ),
+        //         Container(
+        //           width: 50,
+        //           height: 50,
+        //           margin: const EdgeInsets.all(10),
+        //           color: Colors.blue,
+        //         ),
+        //       ],
+        //     ),
+        //     const SizedBox(height: 20),
+        //     Row(
+        //       mainAxisAlignment: MainAxisAlignment.center,
+        //       children: [
+        //         Container(
+        //           width: 50,
+        //           height: 50,
+        //           margin: const EdgeInsets.all(10),
+        //           color: Colors.purple,
+        //         ),
+        //         Container(
+        //           width: 50,
+        //           height: 50,
+        //           margin: const EdgeInsets.all(10),
+        //           color: Colors.green,
+        //         ),
+        //         Container(
+        //           width: 50,
+        //           height: 50,
+        //           margin: const EdgeInsets.all(10),
+        //           color: Colors.yellow,
+        //         ),
+        //       ],
+        //     ),
+        //   ],
+        // ),
+        );
   }
 }
